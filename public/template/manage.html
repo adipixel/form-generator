@@ -1,0 +1,39 @@
+<div ng-app="myApp" ng-controller="manageCtrl">
+  {{title}}
+
+  <div id="control_panel">
+    <label for="singleSelect"> Add Components </label><br>
+    <select name="singleSelect" id="singleSelect" ng-model="template">
+      <option value="">---Please select---</option> <!-- not selected / blank option -->
+      <option ng-repeat="item in componentList" value={{item.template}}>{{item.name}}</option> <!-- interpolation -->
+    </select>
+    <button type="button" name="button" ng-click="addComp()">Select</button>
+    <p>{{template}}</p>
+    <p>{{comp.label}}</p>
+
+    <div id="componentDetails">
+      <ng-include src="template"></ng-include>
+
+    </div>
+
+    <!-- textbox -->
+    <script type="text/ng-template" id="textbox">
+      <label for="label">Textbox Label</label>
+      <input type="text" name="label" ng-model="comp.label">
+      <br>
+      <button type="button" name="button" ng-click="addElements.addTextbox()">Add Textbox to Form</button>
+    </script>
+
+    <!-- b number -->
+    <script type="text/ng-template" id="bnumber">
+      <label for="label">Label</label>
+      <input type="text" name="label" ng-model="comp.label">
+      <br>
+      <button type="button" name="button" ng-click="addElements.addBnumber()">Add B-Number to Form</button>
+    </script>
+
+  </div>
+  <div id="preview" style="padding: 100px; border: 1px solid #e2e2e2;">
+
+  </div>
+</div>
